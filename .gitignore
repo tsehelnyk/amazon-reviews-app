@@ -35,3 +35,5 @@ build/
 target/*
 log/*
 *.json
+Reviews.csv
+*.csv#

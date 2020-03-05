@@ -27,7 +27,7 @@ public class Review {
     private Long time;
     @Column(length = 250)
     private String summary;
-    @Column(length = 2500)
+    @Column(columnDefinition="TEXT")
     private String text;
 
 

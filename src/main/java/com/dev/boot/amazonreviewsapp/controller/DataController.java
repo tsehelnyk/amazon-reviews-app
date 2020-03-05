@@ -2,7 +2,8 @@ package com.dev.boot.amazonreviewsapp.controller;
 
 import com.dev.boot.amazonreviewsapp.entity.model.Review;
 import com.dev.boot.amazonreviewsapp.service.ReviewService;
-import com.dev.boot.amazonreviewsapp.util.CsvToObjectConverter;
+import com.dev.boot.amazonreviewsapp.util.CsvToObjectsListConverter;
+import java.io.IOException;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,15 +15,18 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/data")
 public class DataController {
+    private final static String FILE_PATH = "src/main/resources/tables/Reviews2.csv";
+
     @Autowired
     private ReviewService reviewService;
     @Autowired
-    private CsvToObjectConverter csvToObjectConverter;
+    private CsvToObjectsListConverter csvToObjectsListConverter;
 
-    @GetMapping("/add")
-    public void LoadDataFromFile() {
-        // call parser
-        reviewService.add();
+    @GetMapping("/add-from-csv")
+    public String LoadDataFromFile() throws IOException {
+        List<Review> reviews = csvToObjectsListConverter.convert(FILE_PATH);
+        reviewService.addAll(reviews);
+        return "done";
     }
 
     @GetMapping("/get")

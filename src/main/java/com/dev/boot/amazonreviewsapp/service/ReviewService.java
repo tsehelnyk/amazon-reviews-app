@@ -7,6 +7,8 @@ public interface ReviewService {
 
     Review add(Review review);
 
+    List<Review> addAll(List<Review> reviews);
+
     List<Review> getByUser(String userId);
 
     List<Review> getByProduct(String productId);

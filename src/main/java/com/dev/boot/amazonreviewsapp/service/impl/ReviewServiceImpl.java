@@ -18,6 +18,11 @@ public class ReviewServiceImpl implements ReviewService {
     }
 
     @Override
+    public List<Review> addAll(List<Review> reviews) {
+        return reviewRepository.saveAll(reviews);
+    }
+
+    @Override
     public List<Review> getByUser(String userId) {
         return reviewRepository.findAll();
     }

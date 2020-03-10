@@ -13,7 +13,7 @@ import javax.validation.constraints.Email;
 @Getter
 @Setter
 @Entity
-@Table(name = "rewiews")
+@Table(name = "reviews")
 public class Review {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

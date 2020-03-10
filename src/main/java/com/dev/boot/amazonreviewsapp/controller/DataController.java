@@ -4,6 +4,8 @@ import com.dev.boot.amazonreviewsapp.entity.model.Review;
 import com.dev.boot.amazonreviewsapp.service.ReviewService;
 import com.dev.boot.amazonreviewsapp.util.CsvToObjectsListConverter;
 import java.io.IOException;
+import java.time.Duration;
+import java.time.LocalTime;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,8 +26,10 @@ public class DataController {
 
     @GetMapping("/add-from-csv")
     public String LoadDataFromFile() throws IOException {
+        LocalTime start = LocalTime.now();
         List<Review> reviews = csvToObjectsListConverter.convert(FILE_PATH);
         reviewService.addAll(reviews);
+        System.out.println(Duration.between(start, LocalTime.now()));
         return "done";
     }
 

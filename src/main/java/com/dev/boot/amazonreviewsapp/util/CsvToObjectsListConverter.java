@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.Reader;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVRecord;
 import org.springframework.stereotype.Component;
@@ -18,15 +19,12 @@ public class CsvToObjectsListConverter {
 
     public List<Review> convert(String file) throws IOException {
         try (Reader reader = new FileReader(file)) {
-            Iterable<CSVRecord> records = CSVFormat.DEFAULT
+            List<CSVRecord> records = CSVFormat.DEFAULT
                     .withHeader(HEADERS)
                     .withFirstRecordAsHeader()
-                    .parse(reader);
-            List<Review> reviews = new ArrayList<>();
-            for (CSVRecord record : records) {
-                reviews.add(toReview(record));
-            }
-            return reviews;
+                    .parse(reader)
+                    .getRecords();
+            return records.stream().map(this::toReview).collect(Collectors.toList());
         }
     }
 

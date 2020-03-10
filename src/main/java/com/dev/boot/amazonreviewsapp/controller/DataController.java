@@ -33,8 +33,18 @@ public class DataController {
         return "done";
     }
 
-    @GetMapping("/get")
-    public List<Review> getReviews() {
+    @GetMapping("/get-users-top")
+    public List<String> getUsersTop() {
+        return null;
+    }
+
+    @GetMapping("/get-items-top")
+    public List<String> getItemsTop() {
+        return null;
+    }
+
+    @GetMapping("/get-words-top")
+    public List<String> getWordsTop() {
         return null;
     }
 }

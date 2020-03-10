@@ -2,21 +2,16 @@ package com.dev.boot.amazonreviewsapp.service;
 
 import com.dev.boot.amazonreviewsapp.entity.model.Review;
 import java.util.List;
+import java.util.Set;
 
 public interface ReviewService {
 
-    Review add(Review review);
-
     List<Review> addAll(List<Review> reviews);
 
-    List<Review> getByUser(String userId);
+    Set<String> getMostActiveUsers();
 
-    List<Review> getByProduct(String productId);
+    Set<String> getMostPopularProducts();
 
-    List<String> getMostActiveUsers();
-
-    List<String> getMostPopularProducts();
-
-    List<String> getMostPopularWordsInReviews();
+    Set<String> getMostPopularWordsInReviews();
 
 }

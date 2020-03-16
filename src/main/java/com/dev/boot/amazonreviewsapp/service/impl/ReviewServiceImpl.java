@@ -52,7 +52,7 @@ public class ReviewServiceImpl implements ReviewService {
         return values
                 .stream()
                 .flatMap(val -> getKeys(words, val).stream())
-                .limit(100)
+                .limit(1000)
                 .collect(Collectors.toCollection(LinkedHashSet::new));
     }
 

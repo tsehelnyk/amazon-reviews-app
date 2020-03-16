@@ -1,6 +1,7 @@
 package com.dev.boot.amazonreviewsapp.repository;
 
 import com.dev.boot.amazonreviewsapp.entity.model.Review;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -20,6 +21,6 @@ public interface ReviewRepository extends JpaRepository<Review, Long> {
             "LIMIT 1000) ", nativeQuery = true)
     Set<String> getMostPopularProducts();
 
-    @Query(value = "SELECT TEXT FROM REVIEWS", nativeQuery = true)
+    @Query("SELECT new java.lang.String(r.text) FROM Review r")
     List<String> getReviewsText();
 }

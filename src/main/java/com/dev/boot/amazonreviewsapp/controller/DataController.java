@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.time.Duration;
 import java.time.LocalTime;
 import java.util.List;
+import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -33,8 +34,18 @@ public class DataController {
         return "done";
     }
 
-    @GetMapping("/get")
-    public List<Review> getReviews() {
-        return null;
+    @GetMapping("/get-users-top")
+    public Set<String> getUsersTop() {
+        return reviewService.getMostActiveUsers();
+    }
+
+    @GetMapping("/get-items-top")
+    public Set<String> getItemsTop() {
+        return reviewService.getMostPopularProducts();
+    }
+
+    @GetMapping("/get-words-top")
+    public Set<String> getWordsTop() {
+        return reviewService.getMostPopularWordsInReviews();
     }
 }

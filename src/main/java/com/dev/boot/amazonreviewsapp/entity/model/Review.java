@@ -1,14 +1,13 @@
 package com.dev.boot.amazonreviewsapp.entity.model;
 
-import lombok.Getter;
-import lombok.Setter;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.validation.constraints.Email;
+import lombok.Getter;
+import lombok.Setter;
 
 @Getter
 @Setter
@@ -27,7 +26,7 @@ public class Review {
     private Long time;
     @Column(length = 250)
     private String summary;
-    @Column(columnDefinition="TEXT")
+    @Column(columnDefinition = "TEXT")
     private String text;
 
 

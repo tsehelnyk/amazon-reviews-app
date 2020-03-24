@@ -4,7 +4,6 @@ import com.dev.boot.amazonreviewsapp.entity.model.Review;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import org.apache.commons.csv.CSVFormat;

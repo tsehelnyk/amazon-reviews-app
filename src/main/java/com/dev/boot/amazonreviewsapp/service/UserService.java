@@ -1,6 +1,5 @@
 package com.dev.boot.amazonreviewsapp.service;
 
-
 import com.dev.boot.amazonreviewsapp.entity.model.User;
 
 public interface UserService {

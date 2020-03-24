@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/data")
 public class DataController {
-    private final static String FILE_PATH = "src/main/resources/tables/Reviews2.csv";
+    private static final String FILE_PATH = "src/main/resources/tables/Reviews2.csv";
 
     @Autowired
     private ReviewService reviewService;
@@ -26,7 +26,7 @@ public class DataController {
     private CsvToObjectsListConverter csvToObjectsListConverter;
 
     @GetMapping("/add-from-csv")
-    public String LoadDataFromFile() throws IOException {
+    public String loadDataFromFile() throws IOException {
         LocalTime start = LocalTime.now();
         List<Review> reviews = csvToObjectsListConverter.convert(FILE_PATH);
         reviewService.addAll(reviews);
